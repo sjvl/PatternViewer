@@ -21,6 +21,8 @@ function setup(){
     c.parent( "#container" );
     c.drop( addImg );
 
+    c.canvas.addEventListener( 'click', redraw );
+
     imageMode( CENTER );
 
     size = min( patterns[ 0 ].width, 100 );
@@ -54,7 +56,7 @@ function setup(){
 }
 
 function addImg( file ){
-    patterns.push( loadImage( file.data ).resize( size, size ) );
+    patterns.push( loadImage( file.data ) );
 
     let img = new Image();
     img.src = file.data;
@@ -74,6 +76,8 @@ function addImg( file ){
                 return +index != +id;
             } );
         }
+
+        redraw();
     } );
 
 }
@@ -106,10 +110,6 @@ function draw(){
         }
     }
     noLoop();
-}
-
-function mousePressed(){
-    redraw();
 }
 
 function windowResized(){
