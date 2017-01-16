@@ -7,6 +7,8 @@ var nbPatterns = 12, // nb of patterns in data folder
     nx, ny, // nb patterns on x and y
     mx, my; // margins x and y
 
+var exportBtn;
+
 function preload(){
     patterns = ( new Array( nbPatterns ) ).fill( 0 ).map( ( d, i ) => loadImage( 'data/' + i + '.svg' ) );
     imgs = ( new Array( nbPatterns ) ).fill( 0 ).map( ( d, i ) => {
@@ -18,7 +20,7 @@ function preload(){
 
 function setup(){
     var c = createCanvas( windowWidth, windowHeight );
-    c.parent( "#container" );
+    c.parent( '#container' );
     c.drop( addImg );
 
     c.canvas.addEventListener( 'click', redraw );
@@ -27,14 +29,14 @@ function setup(){
 
     size = min( patterns[ 0 ].width, 100 );
     sizeSlider = createSlider( 20, max( size, 100 ), size, 1 );
-    sizeSlider.parent( "#ui" );
+    sizeSlider.parent( '#ui' );
     sizeSlider.changed( resizeImgs );
 
     imgs[ 0 ].classList.toggle( 'selected' );
     selectedIds.push( 0 );
 
     imgs.forEach( ( img, id ) => {
-        document.querySelector( '#menu' ).appendChild( img );
+        document.querySelector( '#imgs' ).appendChild( img );
 
         img.addEventListener( 'click', e => {
             img.classList.toggle( 'selected' );
@@ -53,6 +55,10 @@ function setup(){
     } );
 
     resizeImgs();
+
+    exportBtn = createButton( 'export canvas' );
+    exportBtn.parent( '#export' );
+    exportBtn.mousePressed( exportCanvas );
 }
 
 function addImg( file ){
@@ -63,7 +69,7 @@ function addImg( file ){
     imgs.push( img );
     let id = imgs.length - 1;
 
-    document.querySelector( '#menu' ).appendChild( img );
+    document.querySelector( '#imgs' ).appendChild( img );
 
     img.addEventListener( 'click', e => {
         img.classList.toggle( 'selected' );
@@ -116,4 +122,12 @@ function draw(){
 function windowResized(){
     resizeCanvas( windowWidth, windowHeight );
     initMarges();
+}
+
+function exportCanvas(){
+    saveCanvas( 'export_' + timestamp(), 'png' );
+}
+
+function timestamp(){
+    return year() + '-' + month() + '-' + day() + '-' + hour() + '-' + minute() + '-' + second();
 }

@@ -1,4 +1,4 @@
-$menu-width: 200px;
+$menu-width: 190px;
 $img-size: 50px;
 
 body{
@@ -37,8 +37,9 @@ canvas{
         background: #fff;
 
         #ui{
-            text-align: center;
+            margin-top: 20px;
             margin-bottom: 20px;
+            text-align: center;
         }
 
         img{
@@ -47,9 +48,14 @@ canvas{
             margin-left: 10px;
             &.selected{
                 box-sizing: border-box;
-                border: solid 3px red;
-                // box-shadow:inset 0px 0px 0px 10px #f00;
+                border: solid 2px red;
             }
+        }
+
+        #export{
+            margin-top: 20px;
+            margin-bottom: 20px;
+            text-align: center;
         }
     }
 }
