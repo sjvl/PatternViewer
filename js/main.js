@@ -1,4 +1,4 @@
-var nbPatterns = 2, // nb of patterns in data folder
+var nbPatterns = 12, // nb of patterns in data folder
     patterns = [],
     imgs = [],
     selectedIds = [],
@@ -104,6 +104,7 @@ function draw(){
                 push();
                 translate( mx + x * size, my + y * size );
                 rotate(HALF_PI * ~~random( 4 ) );
+                if( random( 1 ) < .5 ) scale( -1, 1 );
                 image( patterns[ random( selectedIds ) ], 0, 0, size, size );
                 pop();
             }

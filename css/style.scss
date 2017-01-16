@@ -1,3 +1,6 @@
+$menu-width: 200px;
+$img-size: 50px;
+
 body{
     margin: 0;
     padding: 0;
@@ -16,8 +19,8 @@ canvas{
     position: absolute;
     top: 0;
     bottom: 0;
-    left: -200px;
-    width: 220px;
+    left: -$menu-width;
+    width: $menu-width + 20px;
     background: rgba( 0, 0, 0, 0.1 );
     transition: all 0.3s ease-out;
 
@@ -30,7 +33,7 @@ canvas{
         position: absolute;
         top: 0;
         bottom: 0;
-        width: 200px;
+        width: $menu-width;
         background: #fff;
 
         #ui{
@@ -40,7 +43,7 @@ canvas{
 
         img{
             box-sizing: border-box;
-            width: 50px;
+            width: $img-size;
             margin-left: 10px;
             &.selected{
                 box-sizing: border-box;
