@@ -1,4 +1,4 @@
-var nbPatterns = 12, // nb of patterns in data folder
+var nbPatterns = 1, // nb of patterns in data folder
     patterns = [],
     imgs = [],
     selectedIds = [],
